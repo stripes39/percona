@@ -24,10 +24,26 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+# Options are: 5.0, 5.1, 5.5, latest
+default['percona']['version'] = "5.5"
+
+normal['mysql']['bind_address'] = "127.0.0.1"
+
 case node['platform']
 when "ubuntu", "debian"
-  normal['mysql']['bind_address'] = "127.0.0.1"
-  normal['mysql']['client']['package_names'] = %w{percona-server-client}
-  normal['mysql']['package_name']  = "percona-server-server"
+  case node['percona']['version']
+  when "5.0"
+    normal['mysql']['client']['package_names'] = %w{percona-sql-client}
+    normal['mysql']['package_name']  = "percona-sql-server"
+  when "5.1"
+    normal['mysql']['client']['package_names'] = %w{percona-server-client-5.1}
+    normal['mysql']['package_name']  = "percona-server-server-5.1"
+  when "5.5"
+    normal['mysql']['client']['package_names'] = %w{percona-server-client-5.5}
+    normal['mysql']['package_name']  = "percona-server-server-5.5"
+  when "latest"
+    normal['mysql']['client']['package_names'] = %w{percona-server-client}
+    normal['mysql']['package_name']  = "percona-server-server"
+  end
 end
 
