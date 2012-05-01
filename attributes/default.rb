@@ -26,8 +26,8 @@
 
 case node['platform']
 when "ubuntu", "debian"
-  normal['mysql']'bind_address'] = "127.0.0.1"
+  normal['mysql']['bind_address'] = "127.0.0.1"
   normal['mysql']['client']['package_names'] = %w{percona-server-client}
-  normal['mysql']['server']['package_name']  = "percona-server-server"
+  normal['mysql']['package_name']  = "percona-server-server"
 end
 

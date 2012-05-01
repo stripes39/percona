@@ -46,5 +46,4 @@ when "centos", "rhel", "scientific"
     key "RPM-GPG-KEY-percona"
     action :add
   end
-  end
 end
