@@ -27,8 +27,6 @@
 # Options are: 5.0, 5.1, 5.5, latest
 default['percona']['version'] = "5.5"
 
-normal['mysql']['bind_address'] = "127.0.0.1"
-
 case node['platform']
 when "ubuntu", "debian"
   case node['percona']['version']
