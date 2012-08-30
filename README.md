@@ -24,6 +24,11 @@ related to package names.
 Recipes
 =======
 
+default
+-------
+
+Mirror of `client` recipe.
+
 percona_repo
 ------------
 
@@ -32,12 +37,14 @@ Installs Apt or Yum repos as required to download Percona packages.
 client
 ------
 
-Install Percona client using mysql::client recipe.
+Includes `percona_repo` recipe and installs Percona client using
+`mysql::client` recipe.
 
 server
 ------
 
-Installs Percona server using mysql::server recipe.
+Includes `percona_repo` recipe and installs Percona server using
+`mysql::server` recipe.
 
 Usage
 =====
