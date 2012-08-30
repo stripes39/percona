@@ -49,3 +49,7 @@ Includes `percona_repo` recipe and installs Percona server using
 Usage
 =====
 
+To Do
+=====
+
+  - Add recipes for additional Percona utilities.
