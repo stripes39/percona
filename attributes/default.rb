@@ -27,6 +27,8 @@
 # Options are: 5.0, 5.1, 5.5, latest
 default['percona']['version'] = "5.5"
 
+normal['mysql']['use_upstart'] = false
+
 case node['platform']
 when "ubuntu", "debian"
   case node['percona']['version']
