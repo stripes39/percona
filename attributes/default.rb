@@ -27,6 +27,7 @@
 # Options are: 5.0, 5.1, 5.5, latest
 default['percona']['version'] = "5.5"
 
+# Percona doesn't use upstart like vanilla MySQL does.
 normal['mysql']['use_upstart'] = false
 
 case node['platform']
@@ -35,12 +36,9 @@ when "ubuntu", "debian"
   when "5.0"
     normal['mysql']['client']['packages'] = %w{percona-sql-client}
     normal['mysql']['server']['packages'] = %w{percona-sql-server}
-  when "5.1"
-    normal['mysql']['client']['packages'] = %w{percona-server-client-5.1}
-    normal['mysql']['server']['packages'] = %w{percona-server-server-5.1}
-  when "5.5"
-    normal['mysql']['client']['packages'] = %w{percona-server-client-5.5}
-    normal['mysql']['server']['packages'] = %w{percona-server-server-5.5}
+  when "5.1", "5.5"
+    normal['mysql']['client']['packages'] = %W{percona-server-client-#{node['percona']['version']}}
+    normal['mysql']['server']['packages'] = %W{percona-server-server-#{node['percona']['version']}}
   when "latest"
     normal['mysql']['client']['packages'] = %w{percona-server-client}
     normal['mysql']['server']['packages'] = %w{percona-server-server}
