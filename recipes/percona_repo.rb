@@ -26,7 +26,7 @@
 
 case node['platform']
 when "ubuntu", "debian"
-  require_recipe "apt"
+  include_recipe "apt"
   apt_repository "percona" do
     uri "http://repo.percona.com/apt"
     distribution node['lsb']['codename']
@@ -36,7 +36,7 @@ when "ubuntu", "debian"
     action :add
   end
 when "centos", "rhel", "scientific"
-  require_recipe "yum"
+  include_recipe "yum"
   yum_key "RPM-GPG-KEY-percona" do
     url "http://www.percona.com/downloads/RPM-GPG-KEY-percona"
     action :add
