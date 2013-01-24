@@ -27,6 +27,14 @@
 case node['platform']
 when "ubuntu", "debian"
   include_recipe "apt"
+  
+  # Official Ubuntu repo has newer package, so need to pin this to the version
+  # from the percona repo.
+  apt_preference "libmysqlclient16" do
+    pin "release l=percona"
+    pin_priority "700"
+  end 
+
   apt_repository "percona" do
     uri "http://repo.percona.com/apt"
     distribution node['lsb']['codename']
