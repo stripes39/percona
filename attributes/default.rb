@@ -36,7 +36,7 @@ when "ubuntu", "debian"
   when "5.0"
     normal['mysql']['client']['packages'] = %w{percona-sql-client}
     normal['mysql']['server']['packages'] = %w{percona-sql-server}
-  when "5.1", "5.5"
+  when "5.1", "5.5", "5.6"
     normal['mysql']['client']['packages'] = %W{percona-server-client-#{node['percona']['version']}}
     normal['mysql']['server']['packages'] = %W{percona-server-server-#{node['percona']['version']}}
   when "latest"

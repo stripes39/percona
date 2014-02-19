@@ -16,7 +16,7 @@ Attributes
 
 `percona['version']`
 Which version of Percona to install. Options are `5.0`, `5.1`,
-`5.5`, or `latest`.
+`5.5`, `5.6`, or `latest`.
 
 Other attributes necessarily override the default mysql attributes
 related to package names.
